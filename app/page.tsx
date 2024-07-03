@@ -1,3 +1,7 @@
+import { Suspense } from "react";
+
+import Loading from "./loading";
+
 import { title } from "@/components/primitives";
 import { ListBox } from "@/components/ui/listbox";
 import { ListBoxItem } from "@/components/ui/listboxitem";
@@ -24,24 +28,26 @@ export default async function Home() {
         </h1>
         <h1 className={title({ size: "sm", color: "blue" })}>Next.js</h1>
       </div>
-      <ListBox className="space-y-4 mt-10" items={data}>
-        {(item: Student) => (
-          <ListBoxItem
-            key={item.id}
-            className="hover:scale-105 transform transition-all duration-200 cursor-pointer"
-          >
-            <div className="flex gap-2 items-start justify-between">
-              <div className="flex flex-col">
-                <span className="text-md font-semibold">{`${item.first_name} ${item.last_name}`}</span>
-                <span className="text-sm text-default-500">{item.email}</span>
+      <Suspense fallback={<Loading />}>
+        <ListBox className="space-y-4 mt-10" items={data}>
+          {(item: Student) => (
+            <ListBoxItem
+              key={item.id}
+              className="hover:scale-105 transform transition-all duration-200 cursor-pointer"
+            >
+              <div className="flex gap-2 items-start justify-between">
+                <div className="flex flex-col">
+                  <span className="text-md font-semibold">{`${item.first_name} ${item.last_name}`}</span>
+                  <span className="text-sm text-default-500">{item.email}</span>
+                </div>
+                <div>
+                  <span className="text-xs">Age: {item.age}</span>
+                </div>
               </div>
-              <div>
-                <span className="text-xs">Age: {item.age}</span>
-              </div>
-            </div>
-          </ListBoxItem>
-        )}
-      </ListBox>
+            </ListBoxItem>
+          )}
+        </ListBox>
+      </Suspense>
     </section>
   );
 }
