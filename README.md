@@ -6,6 +6,7 @@
 ```
 $ git clone https://github.com/isaacdarcilla/supabase-edge-nextjs
 $ cd supabase-edge-nextjs
+$ cp .env.example .env.local
 $ bun install // or pnpm, npm, yarn
 $ bun run dev // or pnpm, npm, yarn
 ```
