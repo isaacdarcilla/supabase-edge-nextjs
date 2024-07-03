@@ -1,5 +1,7 @@
 # Supabase Edge Functions and NextJS
 
+![image](https://github.com/isaacdarcilla/supabase-edge-nextjs/assets/22732118/8d1faf88-c7b0-440d-90b3-8fa479844a91)
+
 ### Running Locally
 ```
 $ git clone https://github.com/isaacdarcilla/supabase-edge-nextjs
