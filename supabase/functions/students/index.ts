@@ -27,17 +27,18 @@ const handler = async (): Promise<Response> => {
     .limit(10);
 
   if (error) {
+    // eslint-disable-next-line
     console.error("Error fetching data:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: { "Content-Type": "application/json" } },
-    );
+
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  );
+  return new Response(JSON.stringify(data), {
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 // Start the server
