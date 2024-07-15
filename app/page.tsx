@@ -18,7 +18,8 @@ export default async function Home() {
   const response = await fetch(
     `${process.env.SUPABASE_EDGE_FUNCTIONS}/students`,
   );
-  const data = await response.json();
+
+  const students: Student[] = await response.json();
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -29,7 +30,7 @@ export default async function Home() {
         <h1 className={title({ size: "sm", color: "blue" })}>Next.js</h1>
       </div>
       <Suspense fallback={<Loading />}>
-        <ListBox className="space-y-4 mt-10" items={data}>
+        <ListBox className="space-y-4 mt-10" items={students}>
           {(item: Student) => (
             <ListBoxItem
               key={item.id}
